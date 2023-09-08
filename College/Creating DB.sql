@@ -1,24 +1,30 @@
-create database college;
+CREATE DATABASE college;
 
-use college;
+USE college;
 
-create table student (
-	id int primary key,
-    name varchar(50),
-    age int not null,
-    Course int
+CREATE TABLE course (
+    Cname VARCHAR(20),
+    Cid INT PRIMARY KEY
+);
+insert into course values ("B.Tech", 11);
+insert into course values ("B.Arch", 12);
+insert into course values ("B.Sc", 13);
+insert into course values ("B.Pharm", 23);
+
+CREATE TABLE student (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT NOT NULL,
+    Cid INT, -- Removed the foreign key constraint for Cid
+    FOREIGN KEY (Cid) REFERENCES course(Cid) -- Added a foreign key constraint to reference the course table
 );
 
-insert into student values(1, "Aman", 21, 11);
-insert into student values(2, "Agam", 21, 12);
-insert into student values(3, "Snigdha", 22, 13);
-insert into student values(4, "Vanya", 20, 11);
-insert into student values(5, "Vidushi", 22, 23);
+INSERT INTO student VALUES (1, "Aman", 21, 11);
+INSERT INTO student VALUES (2, "Agam", 21, 12);
+INSERT INTO student VALUES (3, "Snigdha", 22, 13);
+INSERT INTO student VALUES (4, "Vanya", 20, 11);
+INSERT INTO student VALUES (5, "Vidushi", 22, 23);
+
 
 select * from student;
-
-create table course(
-	Cname varchar(20),
-    Cid int
-);
-drop database college;
+select * from course;
